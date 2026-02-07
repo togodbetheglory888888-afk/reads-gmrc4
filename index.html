@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GMRC IV Quarter 4 Interactive Game</title>
+<style>
+body { font-family: Arial; margin:0; padding:0; background:#fff8e6; }
+.center-screen {
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  height:100vh; text-align:center;
+}
+h1 { font-size:55px; color:#ff6600; margin-bottom:30px; }
+button.play-now {
+  background-color:#ff6600; color:white; font-size:28px; padding:18px 50px;
+  border:none; border-radius:10px; cursor:pointer;
+}
+button { margin:5px 5px 15px 0; padding:12px 25px; font-size:20px; cursor:pointer; }
+.week-content { padding:20px; max-width:900px; margin:auto; }
+h2 { color:#ff6600; font-size:28px; margin-top:40px; }
+h3 { font-size:24px; }
+p.story { text-align:justify; font-size:20px; line-height:1.6; background-color:#ffe6cc; padding:15px; border-radius:8px; }
+.feedback { font-weight:bold; margin-bottom:20px; font-size:20px; }
+.score { font-weight:bold; font-size:22px; margin:20px 0; }
+.week { display:none; }
+</style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="startScreen" class="center-screen">
+  <h1>GMRC IV - Quarter 4</h1>
+  <button class="play-now" onclick="startGame()">Simulan</button>
+</div>
+
+<div id="gameContent" class="week-content" style="display:none;">
+
+  <!-- WEEK 1: Ang Baryong Masunurin -->
+  <div class="week" id="week1">
+    <h2>Week 1: Ang Baryong Masunurin</h2>
+    <p class="story">
+      Sa baryo ng San Isidro, maraming tao ang nahirapang sundin ang mga bagong alituntunin. Si Tomas, labing-isang taong gulang, ay kilala sa pagiging masunurin at nagpakita ng magandang halimbawa sa kanyang mga kaibigan at kapitbahay. Dahil dito, unti-unting sumunod ang buong baryo sa mga patakaran, at naging maayos at mapayapa ang kanilang pamayanan.
+    </p>
+
+    <h3>1. Sino si Tomas at ano ang kanyang papel sa baryo ng San Isidro?</h3>
+    <button onclick="checkAnswerGMRC(1,'A')">A) Isang bata na walang pakialam sa baryo</button>
+    <button onclick="checkAnswerGMRC(1,'B')">B) Isang batang masunurin na nagpakita ng mabuting halimbawa</button>
+    <button onclick="checkAnswerGMRC(1,'C')">C) Ang punong-bayan ng baryo</button>
+    <button onclick="checkAnswerGMRC(1,'D')">D) Isang guro sa paaralan</button>
+    <p class="feedback" id="feedbackGMRC1"></p>
+
+    <h3>2. Ano ang mga alituntuning ipinatupad sa baryo at bakit nahirapan ang mga tao na sundin ito?</h3>
+    <button onclick="checkAnswerGMRC(2,'A')">A) Tamang pagtatapon ng basura at curfew; nahirapan dahil bagong patakaran</button>
+    <button onclick="checkAnswerGMRC(2,'B')">B) Masayang pagtitipon; nahirapan dahil wala silang oras</button>
+    <button onclick="checkAnswerGMRC(2,'C')">C) Pagluluto ng pagkain; nahirapan dahil mahal ang presyo</button>
+    <button onclick="checkAnswerGMRC(2,'D')">D) Walang patakaran; hindi nahirapan</button>
+    <p class="feedback" id="feedbackGMRC2"></p>
+
+    <h3>3. Ano ang naging epekto ng pagsunod ng mga bata sa mga alituntunin ng baryo?</h3>
+    <button onclick="checkAnswerGMRC(3,'A')">A) Mas lumala ang kalinisan</button>
+    <button onclick="checkAnswerGMRC(3,'B')">B) Napabuti ang kaayusan at kalinisan sa baryo</button>
+    <button onclick="checkAnswerGMRC(3,'C')">C) Walang nangyari</button>
+    <button onclick="checkAnswerGMRC(3,'D')">D) Napuno ng basura ang baryo</button>
+    <p class="feedback" id="feedbackGMRC3"></p>
+
+    <h3>4. Bakit mahalaga ang pagsunod sa mga alituntunin sa isang pamayanan?</h3>
+    <button onclick="checkAnswerGMRC(4,'A')">A) Para maging magulo</button>
+    <button onclick="checkAnswerGMRC(4,'B')">B) Para mapanatili ang kaayusan at kaligtasan</button>
+    <button onclick="checkAnswerGMRC(4,'C')">C) Para mag-away ang mga tao</button>
+    <button onclick="checkAnswerGMRC(4,'D')">D) Para makakuha ng gantimpala</button>
+    <p class="feedback" id="feedbackGMRC4"></p>
+
+    <h3>5. Sa anong paraan mo maipapakita ang pagiging masunurin sa iyong sariling komunidad?</h3>
+    <button onclick="checkAnswerGMRC(5,'A')">A) Pagsunod sa mga alituntunin at patakaran</button>
+    <button onclick="checkAnswerGMRC(5,'B')">B) Hindi pakikinggan ang guro</button>
+    <button onclick="checkAnswerGMRC(5,'C')">C) Pagsira sa kagamitan ng pamayanan</button>
+    <button onclick="checkAnswerGMRC(5,'D')">D) Pagsuway sa batas</button>
+    <p class="feedback" id="feedbackGMRC5"></p>
+
+    <button onclick="nextWeekGMRC(2)">Tuloy sa Week 2</button>
+  </div>
+
+  <!-- WEEK 2: Ang Paghahanap ng Karapat-dapat na Lider -->
+  <div class="week" id="week2">
+    <h2>Week 2: Ang Paghahanap ng Karapat-dapat na Lider</h2>
+    <p class="story">
+      Si Anna ay nag-aral ng mga katangian ng bawat kandidato bago bumoto. Napili niya si Liza dahil sa malasakit at kakayahang maglingkod. Ipinakita ng kuwento na mahalaga ang karunungan sa pagpili ng lider, hindi lamang husay sa salita kundi sa puso at malasakit.
+    </p>
+
+    <h3>1. Sino si Anna at ano ang naging papel niya sa proseso ng halalan ng mga lider?</h3>
+    <button onclick="checkAnswerGMRC(6,'A')">A) Isang guro na nag-organisa ng halalan</button>
+    <button onclick="checkAnswerGMRC(6,'B')">B) Isang estudyante na nag-aral ng mga katangian ng kandidato bago bumoto</button>
+    <button onclick="checkAnswerGMRC(6,'C')">C) Ang lider ng paaralan</button>
+    <button onclick="checkAnswerGMRC(6,'D')">D) Isang kandidato</button>
+    <p class="feedback" id="feedbackGMRC6"></p>
+
+    <h3>2. Bakit nagdesisyon si Anna na iboto si Liza bilang lider ng mga mag-aaral?</h3>
+    <button onclick="checkAnswerGMRC(7,'A')">A) Dahil matalino at magaling sa salita</button>
+    <button onclick="checkAnswerGMRC(7,'B')">B) Dahil may malasakit, mapagpakumbaba at handang maglingkod</button>
+    <button onclick="checkAnswerGMRC(7,'C')">C) Dahil kilala sa sports</button>
+    <button onclick="checkAnswerGMRC(7,'D')">D) Dahil kaibigan niya</button>
+    <p class="feedback" id="feedbackGMRC7"></p>
+
+    <h3>3. Paano ipinakita sa kuwento na mahalaga ang karunungan sa pagpili ng lider?</h3>
+    <button onclick="checkAnswerGMRC(8,'A')">A) Pinili nila ang lider na may magandang itsura</button>
+    <button onclick="checkAnswerGMRC(8,'B')">B) Pinili nila ang lider na may malasakit at kayang maglingkod</button>
+    <button onclick="checkAnswerGMRC(8,'C')">C) Pinili nila ang lider na kilala sa sports</button>
+    <button onclick="checkAnswerGMRC(8,'D')">D) Pinili nila ang lider na mayaman</button>
+    <p class="feedback" id="feedbackGMRC8"></p>
+
+    <h3>4. Ano ang mahalagang aral na nais iparating ng kuwento tungkol sa pamumuno?</h3>
+    <button onclick="checkAnswerGMRC(9,'A')">A) Mahalaga ang karunungan at malasakit sa pamumuno</button>
+    <button onclick="checkAnswerGMRC(9,'B')">B) Mahalaga lamang ang galing magsalita</button>
+    <button onclick="checkAnswerGMRC(9,'C')">C) Mahalaga ang yaman at kapangyarihan</button>
+    <button onclick="checkAnswerGMRC(9,'D')">D) Walang aral</button>
+    <p class="feedback" id="feedbackGMRC9"></p>
+
+    <h3>5. Paano maaaring gamitin ng mga mag-aaral ang kanilang karunungan sa pagpili ng mga lider sa hinaharap?</h3>
+    <button onclick="checkAnswerGMRC(10,'A')">A) Pumili ng lider batay sa tunay na kakayahan at malasakit</button>
+    <button onclick="checkAnswerGMRC(10,'B')">B) Pumili batay sa hitsura lamang</button>
+    <button onclick="checkAnswerGMRC(10,'C')">A) Pumili batay sa yaman</button>
+    <button onclick="checkAnswerGMRC(10,'D')">D) Pumili ng kahit sino</button>
+    <p class="feedback" id="feedbackGMRC10"></p>
+
+    <div class="score" id="scoreGMRC" style="display:none;"></div>
+    <button onclick="calculateScoreGMRC()">Tingnan ang Score</button>
+  </div>
+
+</div>
+
+<script>
+function startGame(){
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('gameContent').style.display='block';
+  showWeekGMRC(1);
+}
+function nextWeekGMRC(week){ showWeekGMRC(week); }
+function showWeekGMRC(week){
+  const weeks = document.querySelectorAll('.week');
+  weeks.forEach(w=>w.style.display='none');
+  document.getElementById('week'+week).style.display='block';
+}
+
+// Answers for GMRC
+const answersGMRC = {
+  1:'B',2:'A',3:'B',4:'B',5:'A',
+  6:'B',7:'B',8:'B',9:'A',10:'A'
+};
+
+// Filipino-style voice-over
+function speak(text){
+  if('speechSynthesis' in window){
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    msg.lang = 'fil-PH';
+    msg.rate = 0.9; // natural pacing
+    msg.pitch = 1.1; // slightly higher pitch for Filipino accent
+    window.speechSynthesis.speak(msg);
+  }
+}
+
+function checkAnswerGMRC(qNum, choice){
+  const fb=document.getElementById('feedbackGMRC'+qNum);
+  if(choice===answersGMRC[qNum]){
+    fb.textContent='✅ Tama! Magaling!';
+    fb.style.color='green';
+    speak('Tama! Magaling!');
+  } else {
+    fb.textContent='❌ Mali. Subukang muli!';
+    fb.style.color='red';
+    speak('Mali. Subukang muli!');
+  }
+}
+
+function calculateScoreGMRC(){
+  let score=0;
+  for(let i=1;i<=10;i++){
+    const fb=document.getElementById('feedbackGMRC'+i).textContent;
+    if(fb.includes('Tama')) score++;
+  }
+  const scoreText = `Nakuha mo ang ${score} sa 10 tamang sagot!`;
+  document.getElementById('scoreGMRC').textContent=scoreText;
+  document.getElementById('scoreGMRC').style.display='block';
+  speak(scoreText);
+}
+</script>
+
+</body>
+</html>
